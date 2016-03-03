@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>dom performance</title>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<style>
+	.super-test {
+		font-size: 4px;
+	}
+	.super-test li {
+		display: inline-block;
+	}
+	</style>
+</head>
+<body>
+
+	<div class="measurements"></div>
+	<ul class="super-test"></ul>
+
+	<form id="market" action="#">
+
+		<ul class="menu">
+			<li class="market active"><div><a href="market.html">Market Scanner</a></div></li>
+			<li class="alert"><div><a href="alert.html">Alert Scanner</a></div></li>
+			<li class="scanner"><div><a href="scanner.html">High/Low Scanner</a></div></li>
+			<li class="strategies"><div><a href="strategies.html">Strategies</a></div></li>
+			<li class="report"><div><a href="report.html">Technical Report</a></div></li>
+		</ul>
+
+		<div class="header threeway">
+			<div class="left">
+				<div class="container">
+					<label id="exchange" for="exchange">Exchange</label>
+					<select name="exchange">
+						<option value=""></option>
+						<option value="exchange_1">Exchange 1</option>
+						<option value="exchange_2">Exchange 2</option>
+						<option value="exchange_3">Exchange 3</option>
+					</select>
+				</div>
+			</div>
+			<div class="left middle">
+				<div class="container">
+					<label id="industry" for="industry">Industry Group</label>
+					<select name="industry">
+						<option value=""></option>
+						<option value="industry_1">Industry 1</option>
+						<option value="industry_2">Industry 2</option>
+						<option value="industry_3">Industry 3</option>
+					</select>
+				</div>
+			</div>
+			<div class="left right">
+				<div class="container">
+					<label id="stocklist" for="stocklist">Stock List</label>
+					<select name="stocklist">
+						<option value=""></option>
+						<option value="stocklist_1">Stock List 1</option>
+						<option value="stocklist_2">Stock List 2</option>
+						<option value="stocklist_3">Stock List 3</option>
+					</select>
+				</div>
+			</div>
+		</div> <!-- .header -->
+		<div class="cl"><!-- --></div>
+
+
+		<div class="tables">
+			<div id="one" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Last Price</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">3</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Market Cap.</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">10</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Avg.Vol (3m)</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">1</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/cross.png" title="DENIED!" alt="info"> Dividend</td>
+							<td><input type="text" name="dividend_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_4.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="dividend_max"></td>
+							<td><strong class="value">21</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td class="add_criteria" colspan="5">
+								<select name="criteria">
+									<option value=""></option>
+									<option value="criteria_1">Criteria 1</option>
+									<option value="criteria_2">Criteria 2</option>
+									<option value="criteria_3">Criteria 3</option>
+									<option value="criteria_4">Criteria 4</option>
+									<option value="criteria_5">Criteria 5</option>
+								</select>
+								<button class="button add"><img src="assets/img/add.png" alt="add">Add Criteria</button>
+								<button class="button edit"><img src="assets/img/edit.png" alt="edit">Edit Criteria</button>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #one -->
+
+			<div id="two" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Beta</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">100</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> P/E</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">29</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> EPS</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">42</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="all_criteria">
+								<label>All Criteria Fullfiled</label>
+								<strong class="value">1000</strong>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #two -->
+
+		</div> <!-- .tables -->
+		<div class="cl"><!-- --></div>
+
+		<div class="footer">
+			<label id="scan_select" for="scan_select">Scan Selection</label>
+			<select name="scan_select">
+				<option value=""></option>
+				<option value="scan_select_1">Scan Selection 1</option>
+				<option value="scan_select_2">Scan Selection 2</option>
+				<option value="scan_select_3">Scan Selection 3</option>
+			</select>
+
+			<div id="switcher">
+				Stream data
+				<span class="switch on">
+					<a href="#"><!-- --></a>
+				</span>
+				Historical data
+			</div>
+
+			<input id="submit" type="submit" name="submit" value="Submit">
+		</div>
+		<div class="cl"><!-- --></div>
+	</form>
+
+
+	<form id="alert" action="#">
+
+		<ul class="menu">
+			<li class="market"><div><a href="market.html">Market Scanner</a></div></li>
+			<li class="alert active"><div><a href="alert.html">Alert Scanner</a></div></li>
+			<li class="scanner"><div><a href="scanner.html">High/Low Scanner</a></div></li>
+			<li class="strategies"><div><a href="strategies.html">Strategies</a></div></li>
+			<li class="report"><div><a href="report.html">Technical Report</a></div></li>
+		</ul>
+
+		<div class="header">
+			<div class="left">
+				<div class="container">
+					<label id="exchange" for="exchange">Exchange</label>
+					<select name="exchange">
+						<option value=""></option>
+						<option value="exchange_1">Exchange 1</option>
+						<option value="exchange_2">Exchange 2</option>
+						<option value="exchange_3">Exchange 3</option>
+					</select>
+				</div>
+			</div>
+			<div class="left">
+				<div class="container">
+					<label id="industry" for="industry">Industry Group</label>
+					<select name="industry">
+						<option value=""></option>
+						<option value="industry_1">Industry 1</option>
+						<option value="industry_2">Industry 2</option>
+						<option value="industry_3">Industry 3</option>
+					</select>
+				</div>
+			</div>
+		</div> <!-- .header -->
+		<div class="cl"><!-- --></div>
+
+
+		<div class="tables">
+			<div id="one" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Last Price</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">3</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Market Cap.</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">10</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Avg.Vol (3m)</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">1</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Dividend</td>
+							<td><input type="text" name="dividend_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_4.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="dividend_max"></td>
+							<td><strong class="value">21</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td class="add_criteria" colspan="5">
+								<select name="criteria">
+									<option value=""></option>
+									<option value="criteria_1">Criteria 1</option>
+									<option value="criteria_2">Criteria 2</option>
+									<option value="criteria_3">Criteria 3</option>
+									<option value="criteria_4">Criteria 4</option>
+									<option value="criteria_5">Criteria 5</option>
+								</select>
+								<button class="button add"><img src="assets/img/add.png" alt="add">Add Criteria</button>
+								<button class="button edit"><img src="assets/img/edit.png" alt="edit">Edit Criteria</button>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #one -->
+
+			<div id="two" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Beta</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">100</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> P/E</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">29</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> EPS</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">42</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="all_criteria">
+								<label>All Criteria Fullfiled</label>
+								<strong class="value">1000</strong>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #two -->
+
+		</div> <!-- .tables -->
+		<div class="cl"><!-- --></div>
+
+		<div class="footer">
+			<label id="alert_selection" for="alert_selection">Alert Selection</label>
+			<select name="alert_selection">
+				<option value=""></option>
+				<option value="alert_selection_1">Alert Selection 1</option>
+				<option value="alert_selection_2">Alert Selection 2</option>
+				<option value="alert_selection_3">Alert Selection 3</option>
+			</select>
+
+			<div id="switcher">
+				Stream data
+				<span class="switch off">
+					<a href="#"><!-- --></a>
+				</span>
+				Historical data
+			</div>
+
+			<input id="submit" type="submit" name="submit" value="Submit">
+		</div>
+		<div class="cl"><!-- --></div>
+	</form>
+
+
+	<form id="scanner" action="#">
+
+		<ul class="menu">
+			<li class="market"><div><a href="market.html">Market Scanner</a></div></li>
+			<li class="alert"><div><a href="alert.html">Alert Scanner</a></div></li>
+			<li class="scanner active"><div><a href="scanner.html">High/Low Scanner</a></div></li>
+			<li class="strategies"><div><a href="strategies.html">Strategies</a></div></li>
+			<li class="report"><div><a href="report.html">Technical Report</a></div></li>
+		</ul>
+
+		<div class="header">
+			<div class="left">
+				<div class="container">
+					<label id="exchange" for="exchange">Exchange</label>
+					<select name="exchange">
+						<option value=""></option>
+						<option value="exchange_1">Exchange 1</option>
+						<option value="exchange_2">Exchange 2</option>
+						<option value="exchange_3">Exchange 3</option>
+					</select>
+				</div>
+			</div>
+			<div class="left">
+				<div class="container">
+					<label id="industry" for="industry">Industry Group</label>
+					<select name="industry">
+						<option value=""></option>
+						<option value="industry_1">Industry 1</option>
+						<option value="industry_2">Industry 2</option>
+						<option value="industry_3">Industry 3</option>
+					</select>
+				</div>
+			</div>
+		</div> <!-- .header -->
+		<div class="cl"><!-- --></div>
+
+
+		<div class="tables">
+			<div id="one" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Last Price</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">3</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Market Cap.</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">10</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Avg.Vol (3m)</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">1</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Dividend</td>
+							<td><input type="text" name="dividend_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_4.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="dividend_max"></td>
+							<td><strong class="value">21</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td class="add_criteria" colspan="5">
+								<select name="criteria">
+									<option value=""></option>
+									<option value="criteria_1">Criteria 1</option>
+									<option value="criteria_2">Criteria 2</option>
+									<option value="criteria_3">Criteria 3</option>
+									<option value="criteria_4">Criteria 4</option>
+									<option value="criteria_5">Criteria 5</option>
+								</select>
+								<button class="button add"><img src="assets/img/add.png" alt="add">Add Criteria</button>
+								<button class="button edit"><img src="assets/img/edit.png" alt="edit">Edit Criteria</button>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #one -->
+
+			<div id="two" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Beta</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">100</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> P/E</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">29</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> EPS</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">42</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="all_criteria">
+								<label>All Criteria Fullfiled</label>
+								<strong class="value">1000</strong>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #two -->
+
+		</div> <!-- .tables -->
+		<div class="cl"><!-- --></div>
+
+		<div class="footer">
+			<label id="quantalytics" for="quantalytics">Quantalytics Selection</label>
+			<select name="quantalytics">
+				<option value=""></option>
+				<option value="quantalytics">Quantalytics 1</option>
+				<option value="quantalytics">Quantalytics 2</option>
+				<option value="quantalytics">Quantalytics 3</option>
+			</select>
+
+			<div id="switcher">
+				Stream data
+				<span class="switch on">
+					<a href="#"><!-- --></a>
+				</span>
+				Historical data
+			</div>
+
+			<input id="submit" type="submit" name="submit" value="Submit">
+		</div>
+		<div class="cl"><!-- --></div>
+	</form>
+
+
+	<form id="strategies" action="#">
+
+		<ul class="menu">
+			<li class="market"><div><a href="market.html">Market Scanner</a></div></li>
+			<li class="alert"><div><a href="alert.html">Alert Scanner</a></div></li>
+			<li class="scanner"><div><a href="scanner.html">High/Low Scanner</a></div></li>
+			<li class="strategies active"><div><a href="strategies.html">Strategies</a></div></li>
+			<li class="report"><div><a href="report.html">Technical Report</a></div></li>
+		</ul>
+
+		<div class="header">
+			<div class="left">
+				<div class="container">
+					<label id="exchange" for="exchange">Exchange</label>
+					<select name="exchange">
+						<option value=""></option>
+						<option value="exchange_1">Exchange 1</option>
+						<option value="exchange_2">Exchange 2</option>
+						<option value="exchange_3">Exchange 3</option>
+					</select>
+				</div>
+			</div>
+			<div class="left">
+				<div class="container">
+					<label id="industry" for="industry">Industry Group</label>
+					<select name="industry">
+						<option value=""></option>
+						<option value="industry_1">Industry 1</option>
+						<option value="industry_2">Industry 2</option>
+						<option value="industry_3">Industry 3</option>
+					</select>
+				</div>
+			</div>
+		</div> <!-- .header -->
+		<div class="cl"><!-- --></div>
+
+
+		<div class="tables">
+			<div id="one" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Last Price</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">3</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Market Cap.</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">10</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Avg.Vol (3m)</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">1</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Dividend</td>
+							<td><input type="text" name="dividend_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_4.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="dividend_max"></td>
+							<td><strong class="value">21</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td class="add_criteria" colspan="5">
+								<select name="criteria">
+									<option value=""></option>
+									<option value="criteria_1">Criteria 1</option>
+									<option value="criteria_2">Criteria 2</option>
+									<option value="criteria_3">Criteria 3</option>
+									<option value="criteria_4">Criteria 4</option>
+									<option value="criteria_5">Criteria 5</option>
+								</select>
+								<button class="button add"><img src="assets/img/add.png" alt="add">Add Criteria</button>
+								<button class="button edit"><img src="assets/img/edit.png" alt="edit">Edit Criteria</button>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #one -->
+
+			<div id="two" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Beta</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">100</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> P/E</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">29</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> EPS</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">42</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="all_criteria">
+								<label>All Criteria Fullfiled</label>
+								<strong class="value">1000</strong>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #two -->
+
+		</div> <!-- .tables -->
+		<div class="cl"><!-- --></div>
+
+		<div class="footer">
+			<label id="strategy_selection" for="strategy_selection">Strategy Selection</label>
+			<select name="strategy_selection">
+				<option value=""></option>
+				<option value="strategy_selection_1">Strategy Selection 1</option>
+				<option value="strategy_selection_2">Strategy Selection 2</option>
+				<option value="strategy_selection_3">Strategy Selection 3</option>
+			</select>
+
+			<div id="switcher">
+				Stream data
+				<span class="switch on">
+					<a href="#"><!-- --></a>
+				</span>
+				Historical data
+			</div>
+
+			<input id="submit" type="submit" name="submit" value="Submit">
+		</div>
+		<div class="cl"><!-- --></div>
+	</form>
+
+
+	<form id="report" action="#">
+
+		<ul class="menu">
+			<li class="market"><div><a href="market.html">Market Scanner</a></div></li>
+			<li class="alert"><div><a href="alert.html">Alert Scanner</a></div></li>
+			<li class="scanner"><div><a href="scanner.html">High/Low Scanner</a></div></li>
+			<li class="strategies"><div><a href="strategies.html">Strategies</a></div></li>
+			<li class="report active"><div><a href="report.html">Technical Report</a></div></li>
+		</ul>
+
+		<div class="header">
+			<div class="left">
+				<div class="container">
+					<label id="exchange" for="exchange">Exchange</label>
+					<select name="exchange">
+						<option value=""></option>
+						<option value="exchange_1">Exchange 1</option>
+						<option value="exchange_2">Exchange 2</option>
+						<option value="exchange_3">Exchange 3</option>
+					</select>
+				</div>
+			</div>
+			<div class="left">
+				<div class="container">
+					<label id="industry" for="industry">Industry Group</label>
+					<select name="industry">
+						<option value=""></option>
+						<option value="industry_1">Industry 1</option>
+						<option value="industry_2">Industry 2</option>
+						<option value="industry_3">Industry 3</option>
+					</select>
+				</div>
+			</div>
+		</div> <!-- .header -->
+		<div class="cl"><!-- --></div>
+
+
+		<div class="tables">
+			<div id="one" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Last Price</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">3</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Market Cap.</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">10</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Avg.Vol (3m)</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">1</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Dividend</td>
+							<td><input type="text" name="dividend_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_4.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="dividend_max"></td>
+							<td><strong class="value">21</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td class="add_criteria" colspan="5">
+								<select name="criteria">
+									<option value=""></option>
+									<option value="criteria_1">Criteria 1</option>
+									<option value="criteria_2">Criteria 2</option>
+									<option value="criteria_3">Criteria 3</option>
+									<option value="criteria_4">Criteria 4</option>
+									<option value="criteria_5">Criteria 5</option>
+								</select>
+								<button class="button add"><img src="assets/img/add.png" alt="add">Add Criteria</button>
+								<button class="button edit"><img src="assets/img/edit.png" alt="edit">Edit Criteria</button>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #one -->
+
+			<div id="two" class="left">
+				<table>
+					<thead>
+						<tr>
+							<th class="gutter l"><!-- --></th>
+							<th class="criteria">Criteria</th>
+							<th class="min">Min.</th>
+							<th class="distribution">Distribution</th>
+							<th class="max">Max.</th>
+							<th class="found">Found</th>
+							<th class="gutter r"><!-- --></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="row1">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> Beta</td>
+							<td><input type="text" name="last_price_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_3.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="last_price_max"></td>
+							<td><strong class="value">100</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row2">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> P/E</td>
+							<td><input type="text" name="market_cap_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_1.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="market_cap_max"></td>
+							<td><strong class="value">29</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row3">
+							<td class="gutter l"><!-- --></td>
+							<td><img src="assets/img/info.png" title="bla bla info" alt="info"> EPS</td>
+							<td><input type="text" name="avg_vol_min"></td>
+							<td>
+								<div class="slider">
+									<img src="assets/img/chart_2.png" alt="chart">
+									<span class="dart_min"><!-- --></span>
+									<span class="dart_max"><!-- --></span>
+								</div>
+							</td>
+							<td><input type="text" name="avg_vol_max"></td>
+							<td><strong class="value">42</strong></td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="row4">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+
+						<tr class="dummy">
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="dummy">&nbsp;</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="gutter l"><!-- --></td>
+							<td colspan="5" class="all_criteria">
+								<label>All Criteria Fullfiled</label>
+								<strong class="value">1000</strong>
+							</td>
+							<td class="gutter r"><!-- --></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div> <!-- #two -->
+
+		</div> <!-- .tables -->
+		<div class="cl"><!-- --></div>
+
+		<div class="footer">
+			<label id="quantalytics" for="quantalytics">Quantalytics Selection</label>
+			<select name="quantalytics">
+				<option value=""></option>
+				<option value="quantalytics">Quantalytics 1</option>
+				<option value="quantalytics">Quantalytics 2</option>
+				<option value="quantalytics">Quantalytics 3</option>
+			</select>
+
+			<div id="switcher">
+				Stream data
+				<span class="switch on">
+					<a href="#"><!-- --></a>
+				</span>
+				Historical data
+			</div>
+
+			<input id="submit" type="submit" name="submit" value="Submit">
+		</div>
+		<div class="cl"><!-- --></div>
+	</form>
+
+
+	<script src="assets/js/tests.js"></script>
+
+</body>
+</html>

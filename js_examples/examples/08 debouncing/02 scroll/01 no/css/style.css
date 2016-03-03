@@ -1,0 +1,20 @@
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+body {
+	background: url('../img/congruent.png');
+	margin: 0;
+}
+
+.progress {
+	height: 16px;
+	background: orange;
+	width: 0%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+body {
+	height: 2000px;
+}

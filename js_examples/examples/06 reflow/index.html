@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>don't reflow, brother</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<script>
+	// some people say you should use NAMED FUNCTIONS in handlers (easier to debug, test)
+	window.addEventListener("scroll", onScroll, false);
+
+
+	// just to see WHY small optimizations matter
+	function onScroll(event) {
+		console.log( Date.now(), event );
+	}
+	</script>
+
+</body>
+</html>

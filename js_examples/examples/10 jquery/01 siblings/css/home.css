@@ -1,0 +1,66 @@
+/*---------NAVIGATION---------*/
+
+header {
+	height: 85px;
+}
+
+#nav-top {
+	display: block;
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	background-color: #de5728;
+	height: 85px;
+	min-height: 85px;
+	width: 100%;
+}
+
+.navbar-brand {
+	display: inline-block;
+	line-height: 87px;
+	width: auto;
+}
+
+.navbar-brand h1 {
+	color: #fff;
+	font-size: 30px;
+	margin: 0;
+}	
+
+.navbar-brand h1 > strong {
+	color: #323232;
+}
+
+.navbar-brand h1 > strong {
+	color: #323232;
+}
+
+dl {
+	margin-bottom: 20px;
+}
+
+dt {
+	background-color: #59B7E2;
+	padding: 20px;
+	font-weight: bold;
+	margin-top: 20px;
+	border-radius: 3px 3px 0 0;
+}
+
+dd {
+	padding: 10px 20px;
+	background-color: #EEEFED;
+	border-radius: 0 0 3px 3px;
+}
+
+dt a, 
+dt a:hover {
+	color: #323232;
+}
+
+dd small {
+	color: #BBAB9F;
+	margin-top: 5px;
+	font-style: italic;
+	display: block;
+	text-align: right;
+}

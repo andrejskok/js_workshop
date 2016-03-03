@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>behavior delegated loader</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<img class="justin" src="img/jb.png" alt="the beebz">
+
+
+	<!-- loading "icon" -->
+	<div class="spinner">
+		<div class="rect1"></div>
+		<div class="rect2"></div>
+		<div class="rect3"></div>
+		<div class="rect4"></div>
+		<div class="rect5"></div>
+	</div>
+
+
+	<!-- secondary loading "icon" -->
+	<div class="spinner secondary">
+		<div class="rect1"></div>
+		<div class="rect2"></div>
+		<div class="rect3"></div>
+		<div class="rect4"></div>
+		<div class="rect5"></div>
+	</div>
+
+
+
+	<!--
+
+	document.getElementById(id)
+	document.body.getElementsByTagName(tagName)
+
+	document.querySelector(selector)
+	document.querySelectorAll(selector)
+
+	-->
+
+	<script>
+	/**
+	 * to select elements, jquery style
+	 */
+	var $ = function(el) {
+		return document.querySelectorAll(el);
+	}
+
+
+	/**
+	 * add event listeners
+	 */
+	var addEvent = function(el, event, handler) {
+		var elements = ( typeof el === 'string' ) ? $(el) : el;
+
+		[].forEach.call(elements, function(el) {
+			el.addEventListener(event, handler, false);
+		});
+	}
+
+
+
+	/**
+	 * say hi, justin
+	 */
+	addEvent('.justin', 'click', function() {
+		console.log( 'HELLO THERE' );
+	});
+
+
+
+
+
+	// polyfill: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create#Polyfill
+
+
+	/* --------------------------------------------
+	 *
+	 *           BEHAVIOUR DELEGATION
+	 *
+	 */
+
+	// we simply create a lean, mean object
+	var Loader = {
+		init: function(selector) {
+			this.elem = $(selector)[0];
+		},
+		start: function() {
+			this.elem.style.opacity = 1;
+		},
+		stop: function() {
+			this.elem.style.opacity = 0;
+		}
+	};
+
+
+	// create a new object with Loaders prototype and properties
+	var FunkyLoader = Object.create( Loader );
+
+	// we simple change what we dont like
+	FunkyLoader.init = function(selector) {
+		this.elem = $(selector)[0];
+		this.elem.classList.add('funky');
+	}
+
+	FunkyLoader.bounce = function() {
+		var that = this; // we "save" scope
+
+		this.elem.classList.add('bounce');
+
+		// we need to remove the bounce class after animation finishes, otherwise loader won't show up again
+
+		// TODO: check for animation ended instead
+		setTimeout(function() {
+			that.stop(); // anonymous function creates its own scope, so we need to use the saved one
+			that.elem.classList.remove('bounce');
+		}, 700);
+	}
+
+
+
+	/**
+	 * create loader objects
+	 */
+	var loader = Object.create(Loader);
+	loader.init('.spinner');
+	console.log( loader );
+
+	var funky = Object.create(FunkyLoader);
+	funky.init('.secondary');
+	console.log( funky );
+
+
+
+	/**
+	 * events
+	 */
+	addEvent('.justin', 'click', function(event) {
+		loader.start();
+		funky.start();
+	});
+
+	addEvent('.justin', 'contextmenu', function(event) {
+		loader.stop();
+		funky.bounce();
+
+		event.preventDefault();
+	});
+	</script>
+
+</body>
+</html>

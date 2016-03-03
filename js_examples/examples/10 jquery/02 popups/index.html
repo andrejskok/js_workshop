@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Email</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<section class="container"></section>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.easing.js"></script>
+	<script>
+
+		var from = { property: 0 },
+			to   = { property: 250 };
+
+		var duration = 9000,
+			easing   = 'easeInExpo';
+
+		var text = [
+			'Ďakujeme za Váš čas. Nemáme záujem.',
+			'Ďakujeme za Váš záujem. Nechceme.',
+			'Nepozívame vás na pohovor.',
+			'Dali sme prednosť iným uchádzačom.',
+			'Momentálne nemáme záujem o Vašu ponuku.',
+			'Želáme Vám veľa úspechov v pracovnom aj osobnom živote.',
+			'Boli sme nútení dať prednosť iným uchádzačom.',
+			'Momemtálne nemáme žiadne veľné pozície.',
+			'Na túto pozíciu sme už prijali iného uchádzača.',
+			'Je nám ľúto.',
+			'Nemáme záujem.',
+			'Nie.',
+			'Určite nie.',
+			'Nechceme ťa.',
+			'Nie teba.',
+			'Nie.',
+			'Nie!',
+			'Nie.',
+			'Nechceme',
+			'Vôbec nie.',
+			'Odmietame!',
+			'NIE!',
+			'Nechceme ťa v našej práci.',
+			'Nehodíš sa.',
+			'Vybrali sme iného.',
+			'Neželáme si ťa.',
+
+			'<strong>ŠÉF</strong>: "Hovorím ti NIE."',
+			'<strong>ŠÉF</strong>: "Nepovýšim ťa."',
+			'<strong>ŠÉF</strong>: "Žiadosť o povýšenie sa ZAMIETA."',
+			'<strong>ŠÉF</strong>: "Potrebujem to ASAP!"',
+			'<strong>ŠÉF</strong>: "Potrebujem to hneď!"',
+			'<strong>ŠÉF</strong>: "Už aj nech to mám na stole!"',
+			'<strong>ŠÉF</strong>: "Potrebujem to hneď."',
+			'<strong>ŠÉF</strong>: "MAKAJ."',
+			'<strong>ŠÉF</strong>: "Už aj nech je to hotové!"',
+			'<strong>ŠÉF</strong>: "Rýchlejšie!"',
+			'<strong>ŠÉF</strong>: "Viac!"',
+			'<strong>ŠÉF</strong>: "Potrebujem, aby si robil rýchlejšie."',
+			'<strong>ŠÉF</strong>: "Musíš sa viac snažiť."',
+			'<strong>ŠÉF</strong>: "Nerobíš dostatočne rýchlo."',
+			'<strong>ŠÉF</strong>: "Makaj viac."',
+			'<strong>ŠÉF</strong>: "Prines mi kávu."',
+			'<strong>ŠÉF</strong>: "Kde je moja káva?"',
+			'<strong>ŠÉF</strong>: "Maka mi priniesť kávu."',
+			'<strong>ŠÉF</strong>: "Prečo ti to toľko trvá?"',
+			'<strong>ŠÉF</strong>: "Tvoj výkon je nedostatočný."',
+			'<strong>ŠÉF</strong>: "Potrebujem od teba viac."',
+			'<strong>ŠÉF</strong>: "Dám ti menej peňazí."',
+			'<strong>ŠÉF</strong>: "Znižujem ti plat."',
+			'<strong>ŠÉF</strong>: "Dostávaš priveľa peňazí."',
+			'<strong>ŠÉF</strong>: "Makaj viac za menej."',
+			'<strong>ŠÉF</strong>: "Makaj viac."',
+			'<strong>ŠÉF</strong>: "Makaj viac, dostaneš menej."',
+		];
+
+		var types  = ['left', 'right'],
+			styles = ['style-1', 'style-2', 'style-3', 'style-4'];
+
+
+		// ---------
+
+		var val = 0,
+			box = $('.container'),
+			winWidth  = $(window).width(),
+			winHeight = $(window).height();
+			// audio = new Audio('pop.mp3');
+
+
+		printBubble();
+
+		$(from).animate(to, {
+			duration: duration,
+			easing: easing,
+			step: function(now) {
+				if ( Math.floor(now) > val ) {
+					printBubble();
+					val = Math.floor(now);
+				}
+			}
+		});
+
+		function printBubble() {
+			var html = '',
+				line = rand(text);
+
+			var classOne = rand(types),
+				classTwo = rand(styles);
+
+			var pos = {
+				left: Math.ceil(Math.random() * winWidth) - 150,
+				top: Math.ceil(Math.random() * winHeight) - 60
+			}
+
+			html = '<article class="'+ classOne +' '+ classTwo +'" style="left:'+ pos.left +'px; top:'+ pos.top+'px;">';
+			html +=	'	<p>'+ $.trim(line) +'</p>';
+			html +=	'</article>';
+
+	  		box.append( html );
+
+	  		// audio.play();
+		}
+
+		function rand(items) {
+			return items[Math.floor(Math.random()*items.length)]
+		}
+
+	</script>
+
+</body>
+</html>

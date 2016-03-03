@@ -1,0 +1,170 @@
+body {
+	background: url('../img/pentagon.png');
+	padding: 20px;
+}
+
+.justin {
+	position: absolute;
+	cursor: pointer;
+	width: 200px;
+	height: 200px;
+}
+
+
+
+/**
+ * loading icon
+ */
+.spinner {
+	margin: 100px auto;
+	width: 100px;
+	height: 80px;
+	text-align: center;
+	font-size: 14px;
+
+	position: absolute;
+	left: 50%;
+	bottom: 100px;
+	margin-left: -50px;
+
+	opacity: 0;
+	transition: .3s opacity ease-in-out;
+}
+
+.secondary {
+	bottom: 50px;
+}
+
+.spinner > div {
+	background-color: #fa96d2;
+	height: 100%;
+	width: 16px;
+	display: inline-block;
+
+	-webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+	animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+	-webkit-animation-delay: -1.1s;
+	animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+	-webkit-animation-delay: -1.0s;
+	animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+	-webkit-animation-delay: -0.9s;
+	animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+	-webkit-animation-delay: -0.8s;
+	animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+	0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+	20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+	0%, 40%, 100% {
+		transform: scaleY(0.4);
+		-webkit-transform: scaleY(0.4);
+	} 20% {
+		transform: scaleY(1.0);
+		-webkit-transform: scaleY(1.0);
+	}
+}
+
+
+
+/**
+ * funky colors
+ */
+
+.funky > div {
+	transition:
+		.3s opacity ease-in-out,
+		 2s background-color ease-in-out;
+
+	-webkit-animation:
+		stretchdelay 1.2s infinite ease-in-out,
+		funky 1s infinite ease-in-out;
+
+	animation:
+		stretchdelay 1.2s infinite ease-in-out,
+		funky 1s infinite ease-in-out;
+}
+
+@-webkit-keyframes funky {
+	0%   { background-color: #000000; }
+	20%  { background-color: #333333; }
+	40%  { background-color: #FF358B; }
+	60%  { background-color: #01B0F0; }
+	80%  { background-color: #AEEE00; }
+	100% { background-color: #000000; }
+}
+
+@keyframes funky {
+	0%   { background-color: #000000; }
+	20%  { background-color: #333333; }
+	40%  { background-color: #FF358B; }
+	60%  { background-color: #01B0F0; }
+	80%  { background-color: #AEEE00; }
+	100% { background-color: #000000; }
+}
+
+
+
+/**
+ * bounce out
+ */
+
+.bounce {
+	 -webkit-animation-duration: 0.7s;
+	 animation-duration: 0.7s;
+	 -webkit-animation-fill-mode: both;
+	 animation-fill-mode: both;
+	 -webkit-animation-timing-function: ease-out;
+	 animation-timing-function: ease-out;
+
+	 -webkit-animation-name: bounceOut;
+	 animation-name: bounceOut;
+}
+
+@-webkit-keyframes bounceOut {
+ 0% {
+     -webkit-transform: scale(1);
+ }
+ 25% {
+     -webkit-transform: scale(.95);
+ }
+ 50% {
+     opacity: 1;
+     -webkit-transform: scale(1.1);
+ }
+ 100% {
+     opacity: 0;
+     -webkit-transform: scale(.3);
+ }
+}
+@keyframes bounceOut {
+ 0% {
+     transform: scale(1);
+ }
+ 25% {
+     transform: scale(.95);
+ }
+ 50% {
+     opacity: 1;
+     transform: scale(1.1);
+ }
+ 100% {
+     opacity: 0;
+     transform: scale(.3);
+ }
+}

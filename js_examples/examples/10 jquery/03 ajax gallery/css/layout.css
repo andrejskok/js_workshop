@@ -1,0 +1,143 @@
+* 	   { margin: 0; padding: 0; }
+a, img { border: 0; }
+
+body { 
+	width: 960px; margin: 15px auto; 
+	background: #f5f5ed url('../img/bg.png');
+	font: italic 12px 'Trebuchet MS', Georgia, serif; 
+}
+
+.wrap { overflow: hidden; }
+.left { float: left; }
+
+a 		{ color: #888; text-decoration: none; }
+a:hover { color: #DF5045; text-shadow: 1px 1px 0 #fff; }
+
+h1 { 
+	font: normal 64px 'Dancing Script', serif; color: #DF5045;
+	position: relative; left: -5px; 
+	text-shadow: 1px 1px 0 #CF3226, 2px 2px 0 #ccc, 3px 3px 0 #ccc, 4px 4px 0 #c3c3c3;
+}
+
+small { 
+	font: normal 24px 'Dancing Script', serif; color: #afafaf;
+	float: right; margin: 0 50px 25px 0; padding-bottom: 25px;
+	text-shadow: 1px 1px 0 #fff;
+}
+
+small span { font-size: 18px; }
+
+h1, small {
+	-webkit-transform: rotate(-2.3deg);
+	transform: rotate(-2.3deg);
+}	
+
+a:hover {  
+	transition: color .15s ease-in;  
+}
+
+.riadok { 
+	overflow: hidden;
+	margin-top: 25px;
+}
+
+ul {
+	float: left;
+	list-style: none;
+	width: 220px; 
+	margin: 0 10px; 
+}
+
+li		 { padding: 10px; }
+.popis	 { text-align: center; }
+#galeria { margin: 20px 0; overflow: hidden; }
+
+.obrazok img { 
+	width: 195px; height: 135px;
+	border: 1px solid rgba(0, 0, 0, 0.07); /* neat trick s priesvitnym borderom */
+	vertical-align: middle; /* aby bol zasadeny pekne v strede */
+	border-radius: 2px;
+}
+
+/* ak nemame rgba, musime zabudnut na neat trick */
+.no-rgba .obrazok img { border: 1px solid #efefef; } 
+
+.obrazok {
+	background: #fff;
+	text-align: center;
+	border: 1px solid transparent;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+	border-radius: 2px;
+}
+
+.no-rgba .obrazok {	border: 1px solid #ddd; }
+
+.obrazok {
+  -o-transition-property : background-color, border; 	/* co chceme animovat */
+  -o-transition-duration : .25s, .25s; 					/* ako dlho ma kazda animacia trvat */
+  -o-transition-timing-function : ease-in, ease-in; 	/* typ prechodu */
+  -moz-transition-property : background-color, border;
+  -moz-transition-duration : .25s, .25s;
+  -moz-transition-timing-function : ease-in, ease-in;
+  -webkit-transition-property : background-color, border;
+  -webkit-transition-duration : .25s, .25s;
+  -webkit-transition-timing-function : ease-in, ease-in;
+  transition-property : background-color, border;
+  transition-duration : .25s, .25s;
+  transition-timing-function : ease-in, ease-in;
+}
+
+.dot { 
+	width: 6px; height: 6px; display: inline-block; margin: 0 0 1px 1px; 
+	border-radius: 3px; box-shadow: 1px 1px 0 #fff;
+}
+.dot.r { background: #EF3B42; }
+.dot.b { background: #4D95CF; }
+.dot.p { background: #A5408E; }
+
+#strankovanie { text-align: center; margin: 25px 0 5px 0; }
+#strankovanie a, #strankovanie strong { 
+	display: inline-block; padding: 5px 10px; font-size: 10px;
+	border-radius: 2px; 
+}
+#strankovanie a {
+	background: #fff;  
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+#strankovanie a:hover { 
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+}
+#strankovanie strong { color: #666; }
+
+
+
+/*	FARBY SEM
+ -------------------------------------------------------------------------------------- */
+
+/*  zelena/default  */
+.obrazok:hover, .green:hover { 
+	background-color: rgb(134,191,62); /* fallback pre browser bez rgba */
+	background-color: rgba(134,191,62,.8);
+	border: 1px solid rgb(116,165,54);
+}
+
+/*  fialova  */
+.purple:hover { 
+	background-color: rgb(191,62,140); 
+	background-color: rgba(191,62,140,.8);
+	border: 1px solid rgb(165,54,142);
+}
+
+/*  cervena  */
+.red:hover { 
+	background-color: rgb(239,59,66); 
+	background-color: rgba(239,59,66,.8);
+	border: 1px solid rgb(165,54,54);
+}
+
+/*  modra  */
+.blue:hover { 
+	background-color: rgb(119,185,239); 
+	background-color: rgba(119,185,239,.8);
+	border: 1px solid rgb(77,149,207);
+}

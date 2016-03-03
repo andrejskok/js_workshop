@@ -1,0 +1,84 @@
+/**
+ * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ */
+
+
+
+/* general */
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font: 20px Rockwell, "Courier Bold", Georgia, serif;
+	font-weight: bold;
+	background: #f7f6d3;
+	padding: 1em;
+	-webkit-font-smoothing: antialiased;
+}
+
+body,
+a {
+	color: #fff;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+header, nav, article, aside, footer {
+	padding: 1.2em;
+	border-radius: .5em;
+	margin: 5px;
+}
+
+header  { background: #3b9ae1; }
+nav     { background: #f6be00; }
+article { background: #e64134; }
+aside   { background: #eb70b1; }
+footer  { background: #0f1a5f; }
+
+
+/* FLEX */
+main {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+main > * {
+	flex: 1;
+}
+
+nav {
+	order: 1;
+}
+
+article {
+	order: 2;
+	flex: 3;
+}
+
+aside {
+	order: 3;
+}
+
+
+/* MEDIA QUERIES */
+@media ( max-width: 800px ) {
+	article { order: 1; flex: 1 100%; }
+	nav     { order: 2; }
+	aside   { order: 3; }
+}
+
+@media ( max-width: 600px ) {
+	nav, aside { flex: 1 100%; }
+}

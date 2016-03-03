@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>slider animation</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<div id="slider" class="fadecovers">
+		<a href="#prev" class="arrow prev">prev</a>
+		<a href="#next" class="arrow next">next</a>
+
+		<img class="cover" src="img/image-1.jpg" alt="slide">
+		<img class="cover" src="img/image-2.jpg" alt="slide">
+		<img class="cover" src="img/image-3.jpg" alt="slide">
+		<img class="cover" src="img/image-4.jpg" alt="slide">
+		<img class="cover" src="img/image-5.jpg" alt="slide">
+		<img class="cover" src="img/image-6.jpg" alt="slide">
+		<img class="cover" src="img/image-7.jpg" alt="slide">
+	</div>
+
+
+	<script src="js/jquery.js"></script>
+	<script src="js/slider.js"></script>
+	<script>
+
+	/**
+	 * self-invoking anonymous function
+	 * i usually trap my code in something like this
+	 */
+	(function() {
+
+
+
+	}());
+
+
+
+	/**
+	 * a simple SINGLETON module with both private and public properties
+	 */
+	var awesomeApp = (function() {
+		var name = 'Jake';
+		var age = 28;
+		var status = 'yellow';
+		return {
+			createHero: function() {
+
+			},
+			getHeroDetails: function() {
+
+			}
+		}
+	}());
+
+	// this is how you'd access it
+	awesomeApp.getHeroDetails();
+
+
+
+
+
+	/**
+	 * SLIDER ( did i mention i trap my code like this? )
+	 * ------------------------------------
+	 *
+	 * should be discussed after chapter on performance
+	 * check timeline
+	 */
+	(function($) {
+
+		// load it up
+		Slider.init({
+			selector: '.cover'
+		});
+
+
+		// click on left arrow
+		$('.prev').on('click', function() {
+			Slider.prev();
+		});
+
+
+		// click on right arrow
+		$('.next').on('click', function() {
+			Slider.next();
+		});
+
+
+		// so we can clickitty-click on the keyboard
+		$(document).on('keydown', function(event) {
+
+			// we use .keyCode or .which, whichever exists
+			var keyCode = event.keyCode || event.which,
+	      		arrow = {left: 37, up: 38, right: 39, down: 40 };
+
+			switch(event.which) {
+				case arrow.left:
+					Slider.prev();
+					break;
+				case arrow.right:
+					Slider.next();
+					break;
+			}
+
+		});
+
+	})(jQuery);
+	</script>
+
+</body>
+</html>

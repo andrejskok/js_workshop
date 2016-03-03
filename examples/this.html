@@ -1,0 +1,39 @@
+<html>
+    <head></head>
+    <script >
+       var obj = {
+           value: 5,
+           getValue: function() {
+               var tmp = function(){
+                   console.log(this);
+                   return this.value*this.value; // this is not obj anymore
+               };
+               return tmp.bind(this)(); //bind it
+           }
+       }
+
+      function abc() {
+          console.log('there');
+      }
+
+      function abc() {
+          console.log('here');
+      }
+       
+       if (true) {
+  
+      } else {
+
+      }
+
+      abc();
+
+       var cde = function() {
+
+       }
+    </script>
+    <body>
+        <div id="content">
+        </div>
+    </body>      
+</html>

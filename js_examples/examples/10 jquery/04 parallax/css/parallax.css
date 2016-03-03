@@ -1,0 +1,74 @@
+.story {
+	margin: 0 auto;
+	overflow: hidden;
+	width: 980px;
+}
+
+.story .float-left,
+.story .float-right {
+	width: 350px;
+	background: rgba(0,0,0,.3);
+	padding: 25px;
+}
+
+#one {
+	background:url(../img/cover-cut.jpg) 50% 0 no-repeat fixed;
+	color: white;
+	height: 600px;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.toothless {
+	background:url(../img/cover-dragon.png) 50% 0 no-repeat fixed;
+	width: 1920px;
+	height: 1200px;
+	margin-left: -960px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 2;
+}
+
+#one .text {
+	position: relative;
+	z-index: 3;
+}
+
+#two {
+	background: url(../img/cover-2.jpg) 50% -100px no-repeat fixed;
+	color: white;
+	height: 1300px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0;
+}
+
+#three {
+	background: url(../img/cover.jpg) 50% 0px no-repeat fixed;
+	color: white;
+	height: 650px;
+}
+
+#three .toothless {
+	background: url('../img/toothless.png') 0 600px no-repeat;
+	width: 366px;
+	height: 744px;
+	z-index: 6;
+	margin-left: 0;
+	left: 200px;
+}
+
+#four {
+	background: url(../img/cover-3.jpg) 50% -50px no-repeat fixed;
+	height: 400px;
+	margin: 0 auto;
+}
+
+#two, #three, #four {
+	position: relative;
+	z-index: 4;
+}

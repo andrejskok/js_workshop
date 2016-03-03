@@ -1,0 +1,40 @@
+<html>
+    <head></head>
+    <script>
+       function Foo() {
+          this.kind = ‘foo’
+       }
+       Foo.prototype = {age: 15};
+        var foo = new Foo(); 
+        foo = {
+            kind: 'foo';
+        }
+        foo.kind //=> ‘foo’
+
+        foo.__proto__ 
+        
+        
+            Equivalent to:
+            function Foo() {
+                var this = {}; // this is not valid, just for illustration
+                this.__proto__ = Foo.prototype;
+                
+                var kind = ‘foo’
+
+                var getKind = function (){
+
+                }
+                
+                return {
+                    getKind: getKind;
+                };
+            }
+        
+        // Special prototype property
+         /* this will be assigned as prototype to every object */
+    </script>
+    <body>
+        <div id="content">
+        </div>
+    </body>      
+</html>

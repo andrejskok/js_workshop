@@ -1,0 +1,55 @@
+h2 {
+	line-height: 40px;
+	font-weight: 600;
+}
+
+h2, p, blockquote {
+	color: #fff;
+	margin-bottom: 20px;
+}
+
+blockquote {
+	font-style: italic;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+.float-left {
+	float: left;	
+	margin: 0 0 0 20px;
+}
+
+.float-right {
+	float: right;
+	margin: 0 20px 0 0;
+}
+
+#nav {
+	list-style: none;
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	overflow: hidden;
+	z-index: 10;
+}
+
+#nav li {
+	float: left;
+	margin-left: 10px;
+}
+
+#nav a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: rgba(0,0,0,.3);
+	-webkit-transition: background .2s;
+	-o-transition: background .2s;
+	transition: background .2s;
+}
+
+#nav a:hover {
+	background: rgba(0,0,0,.4);
+}

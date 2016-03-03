@@ -1,0 +1,39 @@
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+body {
+	background: url('../img/congruent.png');
+	margin: 0;
+}
+
+.progress {
+	height: 16px;
+	background: orange;
+
+	width: 0%;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.progress.better {
+	background: #ddffce;
+
+	/* we show the whole scrollbar, but hide it with scaleX */
+	width: 100%;
+	transform: scaleX(0);
+
+	/* so scaleX goes from left to right, not both sides from the center */
+	transform-origin: top left;
+
+	/* since we only update the width occasionally, we don't want the animation to be choppy */
+	transition: .15s transform ease;
+
+	/* promote scrollbar to new layer */
+	will-change: transform;
+}
+
+body {
+	height: 2000px;
+}

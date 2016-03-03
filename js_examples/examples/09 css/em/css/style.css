@@ -1,0 +1,77 @@
+/**
+ * http://codepen.io/anon/pen/LDqJE?editors=110
+ */
+
+
+/* general */
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+/* clearfix */
+.group:before,
+.group:after { content: " "; display: table; }
+.group:after { clear: both; }
+
+
+body {
+	color: #8F190F;
+	font-size: 100%;
+	font-family: 'Trebuchet MS', Verdana, serif;
+	font-weight: bold;
+	background: #e64134;
+	padding: 3em;
+	-webkit-font-smoothing: antialiased;
+}
+
+h2 { margin-top: 0; }
+p  { margin-bottom: 0; }
+
+article {
+	width: 33.75em; /* 540/16 */
+	padding: 1.875em; /* 30/16 */
+	margin: 0 auto;
+	background: #f6be00;
+	border: 0.25em solid white; /* 4/16 */
+	border-radius: 1.25em; /* 20/16 */
+}
+
+h2 {
+	font-size: 1.625em; /* 26/16 */
+	text-transform: uppercase;
+}
+
+small {
+	color: #BA271B;
+}
+
+.text {
+	font-size: 1.125em; /* 18/16 */
+}
+
+
+/*
+
+	TERAZ POZOR:
+	- elementy, ktore spadaju pod .text, budu mat baseline 18px
+	- cislo, ktorym delime, je velkost fontu RODICA. delime tou velkostou, ktory element ZDEDIL
+	- cize ak line-height elementu p je 24, ale element p od rodica zdedil velkost 18px, delime 24/18
+
+ */
+
+.text p {
+	line-height: 1.3333333333333333em; /* 24/18 */
+}
+
+.text p:last-child {
+	line-height: 0.8888888888888888em; /* 16/18 */
+}
+
+.text small {
+	font-size: 0.7777777777777778em; /* 14/18 */
+}
+
+img {
+	float: left;
+	margin: 0 1.3333333333333333em 0.5555555555555556em 0; /* 24/18 */ /* 10/18 */
+	width: 5.555555555555555em; /* 100/18 */
+}

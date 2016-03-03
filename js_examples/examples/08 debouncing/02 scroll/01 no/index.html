@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>fires on every scroll</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<div class="progress"></div>
+
+
+	<script>
+	/**
+	 * scrollbar
+	 */
+	var bar = document.querySelector('.progress');
+
+	addEventListener('scroll', function() {
+		var max = document.body.scrollHeight - innerHeight;
+		var percent = (pageYOffset / max) * 100;
+		bar.style.width = percent + '%';
+
+		fauxAjax();
+	});
+
+
+	/**
+	 * we simulate a heavy process
+	 */
+	function fauxAjax() {
+		var start    = (new Date()).getTime();
+		var stoptime = Math.floor(Math.random()) * 10 + 15;
+
+		// this a blocking operation
+		// a real ajax call would not be blocking
+		// but this serves to illustrate a point
+		// about how expensive constantly firing events is
+		while( (new Date()).getTime() - start < stoptime ) {
+			// sleep
+		}
+	}
+	</script>
+
+</body>
+</html>

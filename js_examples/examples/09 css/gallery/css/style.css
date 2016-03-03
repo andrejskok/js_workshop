@@ -1,0 +1,54 @@
+/* general */
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+/* clearfix */
+.group:before,
+.group:after { content: " "; display: table; }
+.group:after { clear: both; }
+
+
+body {
+	color: #222;
+	font-size: 60px;
+	font-family: "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif;
+	font-weight: bold;
+}
+
+
+/* layout */
+main {
+	font-size: 0;
+}
+
+img {
+	width: 100%;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+figure {
+	font-size: 16px;
+	color: #000;
+	position: relative;
+
+	width: 33.333333333%;
+	margin: 0;
+	float: left;
+}
+
+figcaption {
+	position: absolute;
+	left: 1em;
+	bottom: 1em;
+}
+
+
+/* media queries */
+@media ( max-width: 900px ) {
+	figure { width: 50%; }
+}
+
+@media ( max-width: 600px ) {
+	figure { width: 100%; }
+}

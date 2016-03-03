@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>extending for fun and profit</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<h1>extending for fun and profit</h1>
+
+	<img src="img/bird.svg" alt="bird">
+	<img src="img/cat.svg" alt="cat">
+	<img src="img/chick.svg" alt="chick">
+
+
+	<script>
+
+	// extend function prototype, for nicer syntax
+	Function.prototype.method = function(name, func) {
+	    if ( !this.prototype[name] ) { // program defensively
+	    	this.prototype[name] = func;
+	    	return this;
+	    }
+	}
+
+	// now we can bind methods very nicely
+	Number.method('toInteger', function () {
+	    return Math[this < 0 ? 'ceil' : 'floor'](this);
+	});
+
+	// sweet
+	console.log(
+		(-10 / 3).toInteger()
+	);
+
+
+
+
+	var images = document.getElementsByTagName('img');
+
+	// HTMLCollection
+	console.log( 'html collection:', images, images instanceof Array );
+
+	// we can call Array.prototype.forEach on it
+	console.log( 'Array.prototype.forEach:' );
+
+	// in modern browsers
+	// or polyfill: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Polyfill
+	[].forEach.call(images, function(item) {
+		console.log(item);
+	});
+
+
+
+
+	// let's create toArray()
+	// if ( typeof Object.prototype.toArray !== 'function' ) {
+	// 	Object.prototype.toArray = function() {
+	// 		return Array.prototype.slice.call( this );
+	// 	};
+	// }
+
+
+	/*Object.method('toArray', function() {
+		return Array.prototype.slice.call( this );
+	});
+
+	console.log(' ');
+	console.log('toArray:', images.toArray(), images.toArray() instanceof Array );
+
+	// now we can do
+	images.toArray().forEach(function(item) {
+		console.log( item );
+	});
+
+	console.log(' ');*/
+
+
+
+
+
+	// in modern browsers
+	// or polyfill: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties#Polyfill
+
+	/*Object.defineProperty(Object.prototype, 'toArray', {
+		enumerable: false, // now it won't be cycled through
+		value: function() {
+			return Array.prototype.slice.call( this );
+		}
+	});*/
+
+
+
+
+
+	// look out for the extended object prototype
+	/*var adventure = [{
+			who: 'Ice King',
+			wat: 'Armed with a magic crown and an icy heart, the Ice King has only one goal: to secure a wife by any means necessary.'
+		},{
+			who: 'Marceline',
+			wat: 'Marceline is a wild rocker girl. Centuries of wandering the Land of Ooo have made her a fearless daredevil.'
+		},{
+			who: 'Peppermint Butler',
+			wat: 'Peppermint Butler is an inhabitant of the Candy Kingdom and loyal butler to Princess Bubblegum. He has a mysterious past and an undefined relationship with Death.'
+		}];
+
+	// this is an array of objects
+	adventure.forEach(function(obj) {
+		for (var key in obj) {
+
+			// IMPORTANT BIT RIGHT HERE
+			// if ( obj.hasOwnProperty(key) )
+				console.log( key + ': ' + obj[key] );
+
+		}
+	});
+	console.log(' ');*/
+
+
+
+
+	// since images is a LIVE list of elements
+	// this will fail, after we remove the first element and thereby shorten the array
+
+	/*
+	for (var i = 0; i < images.length; i++) {
+		var image = images[i];
+		if (image.alt) {
+			var text = document.createTextNode(image.alt);
+			image.parentNode.replaceChild(text, image);
+		}
+	};
+	*/
+
+	/*
+	// we have to work backwards
+	var images = document.body.getElementsByTagName("img");
+	for (var i = images.length - 1; i >= 0; i--) {
+		var image = images[i];
+		if (image.alt) {
+			var text = document.createTextNode(image.alt);
+			image.parentNode.replaceChild(text, image);
+		}
+	}
+	*/
+
+	/*
+	// or like this
+	images.toArray().forEach(function(image) {
+  		if ( image.alt ) {
+  			var text = document.createTextNode(image.alt);
+  			image.parentNode.replaceChild(text, image);
+  		}
+	});
+	*/
+
+	</script>
+
+</body>
+</html>

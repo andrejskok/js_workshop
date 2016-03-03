@@ -1,0 +1,44 @@
+<html>
+    <head></head>
+    <script>
+        var name = 'Jake';
+        var age = 28;
+        var status = 'yellow';
+        function createHero(){
+        // [...]
+        }
+        function getHeroDetails() {
+        // [...]
+        }
+        // you just created 5 global variables, dummy!
+        
+        // better
+        var login = (function() { // functions have scope!
+            var name = 'Jake';
+            var age = 28;
+            var status = 'yellow';
+            return {
+            validateInput: function() { },
+            showErrorWindow: function() { }
+            }
+        }());
+
+        var registration = function() { // functions have scope!
+            var name = 'Jake';
+            var age = 28;
+            var status = 'yellow';
+            return {
+            validateInput: function() { },
+            showErrorWindow: function() { }
+            }
+        }();
+
+        login.validateInput(...)
+        registration.validateInput(....)
+
+
+         // it calls itself immediately
+    </script> 
+    <body>
+    </body>
+</html>

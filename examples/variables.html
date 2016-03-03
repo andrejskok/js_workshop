@@ -1,0 +1,65 @@
+<html>
+    <head></head>
+    <script></script>
+    <script></script>
+    <script>
+        var a = 5, b;
+        a = 'this is string';
+        
+        // use before assignement
+        console.log(b);
+        b = 10;
+        
+       function value() {
+            var x, y = x = 0;
+            b = 5;
+            c = 10; // global
+            d = 7;
+            
+            for(i = 0; i < 10; i++) {
+                var abc;
+                (function() {
+                    var g = "15";
+
+                })(); 
+            }
+            console.log(g); // access variable outside block
+        }
+        
+        value();
+
+        console.log(y); // 0
+        console.log(x); // ref error
+
+        console.log(b);
+        console.log(c); //global
+        console.log(d); // error
+        
+        // hoisting
+        example = 2
+        var example;
+        
+        // intepreted as:
+        var example;
+        example = 2;
+        
+        
+        // Declaration of more variables:
+        var aa = 0,
+            ba = 0;
+        
+        //Beware!!!
+        var x = 0;
+
+        function f(){
+            var x = y = 1; // x is declared locally. y is not!
+        }
+        f();
+
+        console.log(x, y); // 0, 1
+    </script>
+    <body>
+        <div id="content">
+        </div>
+    </body>      
+</html>
